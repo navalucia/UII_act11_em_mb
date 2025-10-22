@@ -1,0 +1,30 @@
+{% load static %}  <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Gimnasio FitLife{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>🏋️ Gimnasio FitLife</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'app_miembros:lista_miembros' %}">Miembros</a></li>
+                <li><a href="{% url 'app_miembros:lista_membresias' %}">Membresías</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block contenido %}
+        <h2>Bienvenido al sistema de gestión.</h2>
+        <p>Utiliza la barra de navegación superior para acceder al CRUD.</p>
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 Gimnasio FitLife</p>
+    </footer>
+</body>
+</html>

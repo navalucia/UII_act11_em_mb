@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block title %}Confirmar borrado{% endblock %}
+
+{% block contenido %}
+<h2>¿Seguro que deseas eliminar este {{ tipo }}?</h2>
+<p><strong>{{ objeto }}</strong></p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn-borrar">Sí, eliminar</button>
+    <a href="javascript:history.back()" class="btn-cancelar">Cancelar</a>
+</form>
+{% endblock %}

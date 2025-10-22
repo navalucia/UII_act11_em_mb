@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block title %}Lista de Miembros{% endblock %}
+
+{% block contenido %}
+<h2>Miembros Registrados</h2>
+
+<a class="btn" href="{% url 'app_miembros:agregar_miembro' %}">➕ Agregar Miembro</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+            <th>Fecha Registro</th>
+            <th>Membresía</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for miembro in miembros %}
+        <tr>
+            <td>{{ miembro.id_miembro }}</td>
+            <td>{{ miembro.nombre }}</td>
+            <td>{{ miembro.apellido }}</td>
+            <td>{{ miembro.telefono }}</td>
+            <td>{{ miembro.fecha_registro }}</td>
+            <td>{{ miembro.membresia.nombre }}</td>
+            <td>
+                <a href="{% url 'app_miembros:modificar_miembro' id_miembro=miembro.id_miembro %}">✏️ Editar</a> |
+                <a href="{% url 'app_miembros:eliminar_miembro' id_miembro=miembro.id_miembro %}">🗑️ Borrar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="7">No hay miembros registrados.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
